@@ -43,9 +43,9 @@ class Spider:
         html_string = ''
         try:
             response = urlopen(page_url)
-            #if response.getheader('Content-Type') == 'text/html':
-            html_bytes = response.read()
-            tml_string = html_bytes.decode("utf-8")
+            if response.getheader('Content-Type') == 'text/html':
+				html_bytes = response.read()
+				tml_string = html_bytes.decode("utf-8")
             finder = LinkFinder(Spider.base_url, page_url)
             finder.feed(html_string)
         except:
